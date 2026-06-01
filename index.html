@@ -1,1 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vahan & Kristina | 26.06.2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FDFCF9;
+            --text-color: #2C2C2C;
+            --text-light: #6B6B6B;
+            --gold-1: #BF953F;
+            --gold-2: #FCF6BA;
+            --gold-3: #B38728;
+            --gold-4: #FBF5B7;
+            --gold-5: #AA771C;
+            --accent-bg: #F4F1EA;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .gold-text {
+            background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-3), var(--gold-4), var(--gold-5));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Layout & Sections */
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            width: 150px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-3), transparent);
+        }
+
+        .divider span {
+            padding: 0 15px;
+            color: var(--gold-3);
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at center, #fff 0%, var(--bg-color) 100%);
+        }
+
+        .hero-date {
+            font-size: 1rem;
+            letter-spacing: 0.4em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .hero-names {
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-names .amp {
+            font-style: italic;
+            font-size: 0.7em;
+            display: block;
+            margin: -10px 0;
+            opacity: 0.8;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            background-color: var(--accent-bg);
+            padding: 80px 20px;
+            margin: 0 -20px;
+            width: calc(100% + 40px);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .time-box {
+            min-width: 100px;
+        }
+
+        .time-box span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            display: block;
+            line-height: 1;
+        }
+
+        .time-box label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Events */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .event-card {
+            background: #fff;
+            padding: 40px 30px;
+            border: 1px solid rgba(179, 135, 40, 0.2);
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(179, 135, 40, 0.1);
+        }
+
+        .event-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .event-detail strong {
+            color: var(--text-color);
+            min-width: 70px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        /* RSVP Button */
+        .btn-rsvp {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 18px 45px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gold-5);
+            border: 1px solid var(--gold-3);
+            background: transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .btn-rsvp:hover {
+            background: linear-gradient(90deg, var(--gold-1), var(--gold-3));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(179, 135, 40, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            background-color: var(--text-color);
+            color: #fff;
+            text-align: center;
+        }
+
+        footer .gold-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: #888;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .countdown { gap: 15px; }
+            .time-box { min-width: 70px; }
+            .time-box span { font-size: 2.5rem; }
+            .events-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <p class="subtitle fade-in">Save The Date</p>
+        <p class="hero-date fade-in">Friday, June 26, 2026</p>
+        <h1 class="hero-names fade-in">
+            Vahan
+            <span class="amp gold-text">&</span>
+            Kristina
+        </h1>
+        <div class="divider fade-in"><span>✦</span></div>
+        <p class="subtitle fade-in" style="margin-top: 20px;">26 . 06 . 2026</p>
+    </section>
+
+    <!-- COUNTDOWN SECTION -->
+    <div class="countdown-container">
+        <section style="padding-top: 0; padding-bottom: 0;">
+            <p class="subtitle fade-in">Counting Down To Forever</p>
+            <h2 class="fade-in" style="font-size: 2.5rem;">Until We Say "I Do"</h2>
+            <div class="countdown fade-in" id="countdown">
+                <div class="time-box">
+                    <span id="days" class="gold-text">000</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-box">
+                    <span id="hours" class="gold-text">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-box">
+                    <span id="minutes" class="gold-text">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="time-box">
+                    <span id="seconds" class="gold-text">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- INVITATION TEXT -->
+    <section>
+        <p class="subtitle fade-in">The Invitation</p>
+        <h2 class="fade-in" style="font-size: 2.5rem; font-style: italic; max-width: 700px; margin: 0 auto;">
+            "Two souls, one heart, embarking on a beautiful journey together."
+        </h2>
+        <div class="divider fade-in"><span>✦</span></div>
+        <p class="fade-in" style="max-width: 600px; margin: 0 auto; color: var(--text-light); font-size: 1.05rem; line-height: 1.8;">
+            Together with their families, Vahan and Kristina joyfully invite you to share in the celebration of their marriage. Your presence is the greatest gift of all as we begin our new life together.
+        </p>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section>
+        <p class="subtitle fade-in">The Celebration</p>
+        <h2 class="fade-in" style="font-size: 2.5rem;">Wedding Events</h2>
+        
+        <div class="events-grid">
+            <!-- Ceremony Card -->
+            <div class="event-card fade-in">
+                <h3 class="gold-text">Ceremony</h3>
+                <div class="event-detail">
+                    <strong>Time:</strong> 4:00 PM - 5:00 PM
+                </div>
+                <div class="event-detail">
+                    <strong>Location:</strong> The Grand Botanical Gardens
+                </div>
+                <div class="event-detail">
+                    <strong>Address:</strong> 123 Elegance Avenue, City
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 20px; font-style: italic;">
+                    Please arrive 15 minutes prior to the start of the ceremony.
+                </p>
+            </div>
+
+            <!-- Reception Card -->
+            <div class="event-card fade-in">
+                <h3 class="gold-text">Reception</h3>
+                <div class="event-detail">
+                    <strong>Time:</strong> 6:00 PM - Late
+                </div>
+                <div class="event-detail">
+                    <strong>Location:</strong> The Crystal Ballroom
+                </div>
+                <div class="event-detail">
+                    <strong>Address:</strong> 123 Elegance Avenue, City
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 20px; font-style: italic;">
+                    Dinner, dancing, and celebrations to follow under the stars.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section style="background-color: var(--accent-bg); margin: 0 -20px; width: calc(100% + 40px); max-width: calc(100% + 40px);">
+        <p class="subtitle fade-in">Join Us</p>
+        <h2 class="fade-in" style="font-size: 2.5rem;">Will You Attend?</h2>
+        <p class="fade-in" style="max-width: 500px; margin: 20px auto 0; color: var(--text-light);">
+            Kindly respond by <strong>May 26, 2026</strong> so we can prepare for your arrival.
+        </p>
+        <!-- Change the href to your RSVP form link (e.g., Google Forms, The Knot, etc.) -->
+        <a href="#rsvp" class="btn-rsvp fade-in">RSVP Here</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="gold-text">V & K</p>
+        <p>#VahanAndKristina2026</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date("Jun 26, 2026 16:00:00").getTime();
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "<h2 style='font-size: 2rem;'>We are married!</h2>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(3, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+
+        // Scroll Fade-In Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
